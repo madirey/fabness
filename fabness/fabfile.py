@@ -73,6 +73,10 @@ def _build(target):
     os.mkdir(env['build_dir'])
 
     # carry out build stages
+    # Note: DEEP nesting here, but many of these are context managers and not
+    # loops.  This seems to be a necessary evil for this level of abstraction.
+    # Even so, runtime performance does not seem to be an issue, as the total
+    # number of applied operations is not large.
     try:
         with lcd(env['build_dir']):
             for stage in env['stages']:
