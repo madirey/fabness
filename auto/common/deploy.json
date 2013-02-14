@@ -1,0 +1,7 @@
+{
+  "comment1": "all things common to all deployments go here.",
+  "comment2": "`meta` is necessary.  The desc is shown with `fab --list`.",
+  "meta": {
+    "desc": "deploys a build"
+  }
+}

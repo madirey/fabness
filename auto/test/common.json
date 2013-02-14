@@ -1,0 +1,4 @@
+{
+  "comment": "put strings that should resolve for all `test` targets here.",
+  "scm_branch": "master",
+}

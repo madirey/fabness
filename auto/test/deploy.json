@@ -1,0 +1,29 @@
+{
+  "hosts": ["localhost"],
+  "stages": [
+    {
+      "desc": "fetching code...",
+      "substages": [
+        ["local", "echo something"],
+        ["run", "rm -rf %(remote_build_dir)s"],
+        ["run", "git clone -b %(scm_branch)s %(scm_repo)s %(build_dir)s"],
+        ["sudo", "ps aux"]
+      ]
+    },
+    {
+      "desc": "doing something with code...",
+      "context": ["prefix", [". %(venv_dir)s/bin/activate"]],
+      "remote_dir": "%(remote_build_dir)s",
+      "substages": [
+        ["run", "python do_stuff.py"]
+      ]
+    },
+    {
+      "desc": "this stage is disabled...",
+      "enabled": 0,
+      "substages": [
+        ["local", "echo this should never happen"]
+      ]
+    }
+  ]
+}
